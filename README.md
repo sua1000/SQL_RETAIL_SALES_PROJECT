@@ -7,6 +7,12 @@ Retail Sales Analysis project using Microsoft SQL Server. Includes database crea
 - **To analyze sales performance by customer, product, and time period.**  
 - **To identify best-selling products and peak sales periods.**  
 - **To demonstrate the use of SQL joins, aggregations, and date functions.**  
-- **To provide real-world retail data analysis practice for learners and developers.**  
+- **To provide real-world retail data analysis practice for learners and developers.**
+
+- ---
+## 🛠 Tech Stack
+- **Database:** Microsoft SQL Server
+- **Language:** T-SQL (Transact-SQL)
+- **Tool:** SQL Server Management Studio (SSMS)
 
 
