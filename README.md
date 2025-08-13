@@ -66,8 +66,8 @@ Retail Sales Analysis project using Microsoft SQL Server. Includes database crea
     CREATE DATABASE P1;
 
     CREATE TABLE Retail_dat
-(
-    transactions_id INT PRIMARY KEY,
+    (
+       transactions_id INT PRIMARY KEY,
     sale_date DATE,	
     sale_time TIME,
     customer_id INT,	
@@ -78,7 +78,8 @@ Retail Sales Analysis project using Microsoft SQL Server. Includes database crea
     price_per_unit FLOAT,	
     cogs FLOAT,
     total_sale FLOAT
-);
+    );
+
 ```
    
 
