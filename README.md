@@ -87,8 +87,8 @@ Retail Sales Analysis project using Microsoft SQL Server. Includes database crea
 - Null value check:Identify and remove records containing null or missing values from the dataset.
 
   ```sql
-  SELECT COUNT(*) FROM Retail_dat;
-  SELECT DISTINCT category FROM Retail_dat;
+  SELECT COUNT(*) AS total_sale FROM Retail_dat;
+  SELECT COUNT(DISTINCT category)  FROM Retail_dat;
   SELECT COUNT(DISTINCT customer_id) FROM Retail_dat;
   SELECT * FROM Retail_dat
   WHERE 
@@ -152,3 +152,104 @@ Retail Sales Analysis project using Microsoft SQL Server. Includes database crea
 	sale_date BETWEEN '2022-11-01' AND '2022-11-30';
   ```
      3.Write a SQL query to calculate the total sales (total_sale) for each category.:
+  ```sql
+  SELECT 
+	category,
+	SUM(total_sale) AS NET_SALE,
+	COUNT(*) AS TOTAL_ORDERS
+  FROM Retail_dat
+  GROUP BY category;
+  ```
+  4.Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category.:
+  ```sql
+  SELECT 
+	AVG(AGE) AS AVERAGE_AGE
+	FROM Retail_dat
+	WHERE CATEGORY ='BEAUTY';
+  ```
+  5.Write a SQL query to find all transactions where the total_sale is greater than 1000.:
+  ```sql
+  SELECT 
+	transactions_id FROM Retail_dat
+	WHERE 
+		total_sale > 1000;
+
+  SELECT * FROM Retail_dat
+  WHERE total_sale > 1000;
+  ```
+  6.Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category.:
+  ```sql
+  SELECT 
+	category,
+	gender,
+	COUNT(*) AS TOTAL_TRANS
+  FROM Retail_dat
+  GROUP BY
+	category,
+	gender
+  ```
+  7.Write a SQL query to calculate the average sale for each month. Find out best selling month in each year:
+```sql
+SELECT 
+		YEAR,
+		MONTH,
+		AVERAGE_MONTHS
+FROM (
+SELECT 
+	YEAR(sale_date) AS YEAR,
+	MONTH(sale_date) AS MONTH,
+	AVG(total_sale) AS AVERAGE_MONTHS,
+	RANK() OVER(PARTITION BY YEAR(sale_date)ORDER BY AVG(total_sale) DESC) AS RANKTABLE
+FROM Retail_dat
+GROUP BY YEAR(sale_date),MONTH(sale_date)
+) AS T1
+WHERE RANKTABLE = 1;
+```
+8.Write a SQL query to find the top 5 customers based on the highest total sales.:
+```sql
+SELECT TOP(5)
+		CUSTOMER_ID,
+		SUM(TOTAL_SALE) AS TOTAL_SALE
+FROM Retail_dat
+GROUP BY customer_id
+ORDER BY total_sale DESC
+```
+9.Write a SQL query to find the number of unique customers who purchased items from each category.:
+```sql
+SELECT CATEGORY,COUNT(DISTINCT CUSTOMER_ID ) AS UNIQUE_CUST FROM RETAIL_DAT
+GROUP BY category
+```
+10.Write a SQL query to create each shift and number of orders (Example Morning <12, Afternoon Between 12 & 17, Evening >17):
+```sql
+WITH hourly_sale
+AS
+(
+
+SELECT *,
+	CASE
+		WHEN DATEPART(HOUR,SALE_TIME) <= 12  THEN 'MORNING'
+		WHEN  DATEPART(HOUR,SALE_TIME) BETWEEN 12 AND 17 THEN 'AFTERNOON' 
+		ELSE 'EVENING'
+	END AS SHIFT_TIMINGS
+FROM Retail_dat
+)
+SELECT 
+SHIFT_TIMINGS,
+COUNT(*) AS TOTAL_ORDERS FROM hourly_sale
+GROUP BY SHIFT_TIMINGS
+```
+## **Findings**
+-- **Customer Demographics:** Customers from diverse age groups and genders, with purchases spanning categories like Clothing, Beauty, Electronics
+-- **High-Value Transactions:** Numerous orders crossed ₹1000 in value, reflecting strong demand for high-end products.
+-- **Sales Trends:** Monthly analysis reveals fluctuating sales patterns, pinpointing peak and off-peak seasons.
+--**Customer Insights:** Analysis highlights top-spending customers and the highest-demand product categories.
+- ---
+## **Reports:**
+
+* **Sales Summary:** Comprehensive overview of total sales, customer demographics, and category-wise performance.
+* **Trend Analysis:** Detailed insights into monthly sales patterns and shift-based purchasing behavior.
+* **Customer Insights:** Identification of top customers and unique customer counts across categories.
+- ---
+##**Conclusion:**
+This project provides a complete hands-on introduction to SQL for data analysis, encompassing database setup, data cleaning, exploratory analysis, and business-oriented queries. Insights from the analysis enable informed decision-making by revealing sales trends, customer purchasing behavior, and product performance patterns.
+- ---
