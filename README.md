@@ -38,22 +38,22 @@ Retail Sales Analysis project using Microsoft SQL Server. Includes database crea
 
 ## 📂 Project Workflow
 1. **Data Cleaning**
-   - --- Identified and removed rows with `NULL` values.
-   - ---Verified row count after cleaning.
+   - Identified and removed rows with `NULL` values.
+   - Verified row count after cleaning.
 
 2. **Data Exploration**
-   - ---Counted total sales transactions.
-   - ---Counted unique customers.
-   - ---Identified product categories.
+   - Counted total sales transactions.
+   - Counted unique customers.
+   - Identified product categories.
 
 3. **Data Analysis**
-   - ---Sales on specific dates.
-   - ---High-quantity orders.
-   - ---Category-wise total sales.
-   - ---Customer demographics.
-   - ---Best-selling month.
-   - ---Top customers by total sales.
-   - ---Shift-wise sales performance.
+   - Sales on specific dates.
+   - High-quantity orders.
+   - Category-wise total sales.
+   - Customer demographics.
+   - Best-selling month.
+   - Top customers by total sales.
+   - Shift-wise sales performance.
 
    - ---
 
@@ -80,7 +80,7 @@ Retail Sales Analysis project using Microsoft SQL Server. Includes database crea
     total_sale FLOAT
     );
     ```
-2.**Data ecploring and cleaning**
+2.**Data exploring and cleaning**
 - Record count:Determine the total number of records in the dataset.
 - Category count: Identify all unique product categories in the dataset.
 - Customer count:Find out how many unique customers are in the dataset.
