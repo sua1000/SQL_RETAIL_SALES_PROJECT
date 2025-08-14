@@ -137,6 +137,7 @@ Retail Sales Analysis project using Microsoft SQL Server. Includes database crea
   3.**Data analysis and findings**
 
   The following SQL queries were developed to find the business insights from the dataset
+  
      1.Write a SQL query to retrieve all columns for sales made on '2022-11-05:
   ```sql
   SELECT * FROM Retail_dat
