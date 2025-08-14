@@ -250,6 +250,6 @@ GROUP BY SHIFT_TIMINGS
 * **Trend Analysis:** Detailed insights into monthly sales patterns and shift-based purchasing behavior.
 * **Customer Insights:** Identification of top customers and unique customer counts across categories.
 - ---
-##**Conclusion:**
+## **Conclusion:**
 This project provides a complete hands-on introduction to SQL for data analysis, encompassing database setup, data cleaning, exploratory analysis, and business-oriented queries. Insights from the analysis enable informed decision-making by revealing sales trends, customer purchasing behavior, and product performance patterns.
 - ---
